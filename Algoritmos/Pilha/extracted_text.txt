@@ -1,0 +1,328 @@
+Conjuntos Dinˆ amicos
+Aula 5
+Estruturas de Dados e Algoritmos
+Jos´ e Jasnau Caeiro
+j.caeiro@ipbeja.pt
+Instituto Polit´ ecnico de Beja
+Beja, 2 de Abril de 2019
+1 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 1 / 40
+Conjuntos Dinˆ amicos
+Na matem´ atica os conjuntos s˜ ao imut´ aveis;
+Na inform´ atica os algoritmos manipulam os conjuntos e podem
+aument´ a-los, diminu ´ ı-los ou modiﬁc´ a-los ao longo do tempo;
+Estes conjuntos designam-se por dinˆ amicos.
+2 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 2 / 40
+1 Conjuntos Dinˆ amicos
+2 Pilhas
+3 Filas de Espera
+4 Listas Ligadas
+Sentinelas
+5 Gest˜ ao da Mem´ oria
+Realiza¸ c˜ ao
+Reserva e Liberta¸ c˜ ao
+6 ´Arvores
+´Arvores Bin´ arias
+´Arvores n-´ arias
+3 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 3 / 40
+Conjuntos Dinˆ amicos
+Opera¸ c˜ oes sobre conjuntos dinˆ amicos
+As opera¸ c˜ oes sobre conjuntos dinˆ amicos podem ser classiﬁcadas em duas
+categorias:
+consultas aquelas que devolvem informa¸ c˜ ao sobre o conjunto;
+modiﬁca¸ c˜ oes aquelas que alteram o conjunto.
+As estruturas de dados particulares usadas na realiza¸ c˜ ao do conjunto
+dinˆ amico apresentam todas ou apenas algumas das opera¸ c˜ oes e
+realizam-nas de modo diverso.
+4 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 4 / 40
+Conjuntos Dinˆ amicos
+Consultas
+pesquisa Search(S, k) ´ e uma opera¸ c˜ ao de consulta que dado um
+conjunto S e um valor da chave k, devolve um apontador x
+para um elemento em S tal que x.key = k, ou nil se k̸∈ S.
+m ´ ınimoMinimum(S), uma consulta sobre um conjunto
+completamente ordenado S que devolve um apontador para
+o elemento de S com a menor chave.
+m´ aximoMaximum(S), uma consulta sobre um conjunto
+completamente ordenado S que devolve um apontador para
+o elemento de S com a maior chave.
+5 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 5 / 40
+Conjuntos Dinˆ amicos
+Consultas
+sucessor Sucessor(S, x), uma consulta que, dado um elemento x
+cuja chave pertence a um conjunto completamente ordenado
+S, devolve o apontador para o elemento que ´ e seguidamente
+o maior em S, ou nil se x ´ e o maior elemento;
+predecessor Predecessor(S, x), uma consulta que, dado um elemento
+x cuja chave pertence a um conjunto completamente
+ordenado S, devolve o apontador para o elemento que ´ e
+seguidamente o menor em S, ou nil se x ´ e o menor
+elemento;
+6 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 6 / 40
+Pilhas
+Pilhas
+A designa¸ c˜ ao inglesa para pilha ´ estack.
+Numa pilha o elemento a remover est´ a pr´ e-deﬁnido e ´ e o elemento
+mais recentemente inserido na pilha;
+A pilha implementa uma pol ´ ıticaLIFO ( last-in, ﬁrst-out).
+7 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 7 / 40
+Pilhas
+Pilhas
+H´ a v´ arias formas de realiza¸ c˜ ao de pilhas de uma forma eﬁciente. Uma
+delas ´ e com o aux ´ ılio de tabelas.
+Uma pilha com um m´ aximo den elementos pode ser realizada com
+uma tabela S[1, . . . , n].
+A pilha possui o atributo S.top que indexa o elemento mais
+recentemente inserido.
+A pilha consiste dos elementos S[1, . . . , S.top], em que S[1] ´ e o
+elemento no fundo da pilha e S[S.top] ´ e o elemento no topo da pilha.
+8 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 8 / 40
+Pilhas
+Pilhas
+Quando S.top = 0 a pilha n˜ ao cont´ em elementos e est´ a no estado
+empty;
+A opera¸ c˜ aoStack-Empty(S) permite veriﬁcar se a pilha est´ a vazia;
+A tentativa de buscar elementos de uma pilha vazia causa um erro de
+underﬂow;
+Se S.top excede n ent˜ ao h´ a um erro deoverﬂow.
+9 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 9 / 40
+Pilhas
+Pilhas
+As opera¸ c˜ oes de pilha s˜ ao:
+veriﬁcar se a pilha est´ a vazia ´ e um predicado com a designa¸ c˜ ao
+Stack-Empty(S);
+empurrar para a pilha coloca na pilha S o elemento x e ´ e uma fun¸ c˜ ao
+com a designa¸ c˜ aoPush(S, x);
+remo¸ c˜ ao da pilha remove da pilha o elementox e designa-se por Pop(S);
+ordem de crescimento as opera¸ c˜ oes demoramO(1).
+10 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 10 / 40
+Pilhas
+Pilhas
+11 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 11 / 40
+Pilhas
+Pilhas
+12 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 12 / 40
+Filas de Espera
+Filas de espera
+As ﬁlas de espera realizam uma pol ´ ıticaFIFO (ﬁrst-in-ﬁrst-out e
+designam-se por queue.
+a opera¸ c˜ aoInsert designa-se por Enqueue;
+a opera¸ c˜ aoDelete designa-se por Dequeue;
+A ﬁla de espera tem uma cauda, tail, e uma cabe¸ ca,head;
+Quando um elemento ´ e colocado na ﬁla de espera toma o lugar na
+cauda da ﬁla de espera;
+O elemento a ser removido da ﬁla de espera ´ e o que se encontra ` a
+cabe¸ ca da ﬁla de espera.
+13 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 13 / 40
+Filas de Espera
+Filas de espera
+A ﬁla de espera ´ e realizada com at´ en− 1 elementos com uma tabela
+Q[1, . . . , n];
+A ﬁla de espera tem o atributo Q.head que indexa a cabe¸ ca da ﬁla de
+espera;
+O atributo Q.tail indexa a pr´ oxima posi¸ c˜ ao em que ser´ a colocado um
+novo elemento na ﬁla de espera;
+A ﬁla de espera ´ e uma estrutura de dados circular;
+Quando Q.head = Q.tail a ﬁla de espera est´ a vazia;
+Inicialmente Q.head = Q.tail = 1.
+14 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 14 / 40
+Filas de Espera
+Filas de espera
+A tentativa de remo¸ c˜ ao de um elemento de uma ﬁla de espera vazia
+causa um erro de underﬂow;
+Quando Q.head = Q.tail + 1 a ﬁla de espera est´ a cheia e a tentativa
+de coloca¸ c˜ ao de um elemento causa um erro deoverﬂow;
+n = Q.length;
+a ordem de crescimento do tempo de execu¸ c˜ ao das opera¸ c˜ oes de ﬁla
+de espera Enqueue e Dequeue ´ eO(1).
+15 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 15 / 40
+Filas de Espera
+Filas de espera
+16 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 16 / 40
+Filas de Espera
+Filas de espera
+17 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 17 / 40
+Listas Ligadas
+Listas ligadas
+Uma lista ligada, designada em inglˆ es porlinked list ´ e uma estrutura de
+dados em que os objetos se encontram colocados por ordem linear.
+Numa tabela a ordem linear ´ e determinada pelos seus ´ ındices;
+Numa lista ligada a ordem linear ´ e determinada por apontadores
+pertencentes a cada objeto da lista;
+Numa lista duplamente ligada L, cada elemento da lista ´ e um
+objeto com os seguinte atributos:
+key a chave, em geral um valor inteiro mas que pode n˜ ao o
+ser;
+prev um apontador para o objeto predecessor;
+next um apontador para o objeto sucessor.
+18 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 18 / 40
+Listas Ligadas
+Listas ligadas
+O objeto pode eventualmente possuir dados sat´ elite.
+Dado o elemento x da lista L, x.next aponta para o elemento
+sucessor em L e x.prev aponta para o elemento predecessor;
+Se x.next =nil o elemento x n˜ ao tem sucessor e ´ e portanto o ´ ultimo
+elemento da lista, ou cauda, (tail).
+Se x.prev =nil o elemento x n˜ ao tem predecessor e ´ e, portanto, o
+primeiro elemento da lista, ou cabe¸ ca da lista, (head);
+O atributo L.head aponta para o primeiro elemento da lista;
+Se L.head =nil, a lista est´ a vazia.
+19 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 19 / 40
+Listas Ligadas
+Listas ligadas
+As listas podem assumir v´ arias formas:
+dupla ou simplesmente ligadas no caso em que a lista ´ e simplesmente
+ligada omite-se o apontador prev;
+ordenadas ou n˜ ao se for ordenada a ordem linear corresponde ` a ordem
+linear das chaves;
+circulares ou n˜ ao numa lista circular o apontador prev da cabe¸ ca da lista
+aponta para a cauda, e o apontador next da cauda aponta
+para a cabe¸ ca da lista.
+Na descri¸ c˜ ao das listas que se segue estas s˜ aoduplamente ligadas e n˜ ao
+ordenadas.
+20 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 20 / 40
+Listas Ligadas
+Opera¸ c˜ oes sobre listas ligadas
+pesquisa A pesquisa de um elemento com a chave k na lista L atrav´ es
+do procedimento List-Search(L, k) devolve um apontador
+para o elemento, se este estiver presente na lista L, caso
+contr´ ario devolvenil.
+inser¸ c˜ ao Dado um elementox com chave k atribu ´ ıda, o procedimento
+List-Insert(L, x) coloca x na frente da lista.
+remo¸ c˜ aoList-Delete(L, x) remove um elemento x da lista L. Caso
+se queira remover um elemento com uma certa chave key
+deve em primeiro lugar procurar-se o elemento na lista.
+21 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 21 / 40
+Listas Ligadas
+Ordens de crescimento do tempo de execu¸ c˜ ao
+As ordens de crescimento dos tempos de execu¸ c˜ ao s˜ ao:
+pesquisa para pesquisar uma lista de n elementos o procedimento
+List-Search demora Θ(n)no pior cen´ ario porque pode
+eventualmente ter de percorrer toda a lista;
+inser¸ c˜ ao ´ e um procedimento unit´ ario e portanto demora com uma
+lista de n elementos O(1);
+remo¸ c˜ ao ´ e tamb´ em procedimento unit´ ario e portanto demora com
+uma lista de n elementos O(1), no entanto se for necess´ ario
+encontrar o elemento com a chave key ter´ a de se realizar em
+primeiro lugar uma pesquisa e tudo demorar´ aΘ(n).
+22 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 22 / 40
+Listas Ligadas
+Listas ligadas
+23 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 23 / 40
+Listas Ligadas
+Inser¸ c˜ ao em listas ligadas
+a) Lista original.
+b) Inser¸ c˜ ao de um elemento comx.key = 25.
+c) Remo¸ c˜ ao do elemento comkey = 4.
+24 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 24 / 40
+Listas Ligadas Sentinelas
+Sentinelas
+Uma sentinela ´ e um objeto que permite simpliﬁcar as condi¸ c˜ oes
+fronteira;
+Sempre que existe uma referˆ encia anil esta ´ e substitu ´ ıda por um
+apontador para o objeto sentinela;
+Isto transforma a lista duplamente ligada numa lista duplamente
+ligada circular com sentinela ;
+L.nil.next aponta para a cabe¸ ca da lista e L.nil.prev aponta para a
+cauda;
+next da cauda e prev da cabe¸ ca apontam paraL.nil;
+n˜ ao h´ a melhoria das ordens de crescimento dos tempos de execu¸ c˜ ao
+mas o c´ odigo ﬁca mais claro;
+pode implicar gastos adicionais de mem´ oria.
+25 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 25 / 40
+Listas Ligadas Sentinelas
+Listas ligadas com sentinela
+26 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 26 / 40
+Listas Ligadas Sentinelas
+Listas ligadas com sentinela
+27 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 27 / 40
+Gest˜ ao da Mem´ oria Realiza¸ c˜ ao
+A realiza¸ c˜ ao de apontadores e objetos
+Podem representar-se cole¸ c˜ oes de objetos com o mesmo conjunto de
+atributos atrav´ es de uma tabela por atributo;
+A lista duplamente ligada pode representar-se com 3 tabelas:
+a tabela key representa as chaves;
+a tabela next representa os apontadores ( ´ ındices) para os elementos
+seguintes;
+a tabela prev representa os apontadores ( ´ ındices) para os elementos
+predecessores.
+Um apontador x ´ e um ´ ındice comum ` as tabelaskey, next e prev.
+28 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 28 / 40
+Gest˜ ao da Mem´ oria Realiza¸ c˜ ao
+Representa¸ c˜ ao cont ´ ıgua da mem´ oria
+Usa-se apenas uma tabela A para a representa¸ c˜ ao da lista ligadaL;
+Um objeto ocupa uma subtabela cont ´ ıguaA[j, . . . , k];
+Cada atributo do objeto corresponde a uma posi¸ c˜ ao deslocada na
+gama de 0 a k− j;
+Um apontador para o objeto corresponde ao ´ ındice j.
+29 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 29 / 40
+Gest˜ ao da Mem´ oria Realiza¸ c˜ ao
+Gest˜ ao da mem´ oria
+30 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 30 / 40
+Gest˜ ao da Mem´ oria Reserva e Liberta¸ c˜ ao
+Reserva e liberta¸ c˜ ao de mem´ oria
+Para inserir uma chave deve reservar-se um apontador para uma zona
+de mem´ oria desocupada;
+Os objetos livres podem ﬁcar numa lista;
+Pode utilizar-se uma lista simplesmente ligada apenas com a tabela
+next;
+A cabe¸ ca da lista encontra-se na vari´ avel globalf ree;
+Cada objeto ou est´ a na listaL ou na lista livre;
+A lista livre apresenta o comportamento de uma pilha.
+31 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 31 / 40
+Gest˜ ao da Mem´ oria Reserva e Liberta¸ c˜ ao
+Aloca¸ c˜ ao e liberta¸ c˜ ao de mem´ oria
+32 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 32 / 40
+Gest˜ ao da Mem´ oria Reserva e Liberta¸ c˜ ao
+Gest˜ ao de mem´ oria
+33 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 33 / 40
+Gest˜ ao da Mem´ oria Reserva e Liberta¸ c˜ ao
+Gest˜ ao de mem´ oria
+As ordens de crescimento dos tempos de execu¸ c˜ ao dos procedimentos
+de reserva e liberta¸ c˜ ao de mem´ oria s˜ aoO(1);
+Quando Allocate-Object() ´ e chamado com a lista livre exausta
+assinala um erro.
+34 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 34 / 40
+Gest˜ ao da Mem´ oria Reserva e Liberta¸ c˜ ao
+Gest˜ ao de mem´ oria
+Um par de listas com gest˜ ao comum de mem´ oria.
+35 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 35 / 40
+´Arvores ´Arvores Bin´ arias
+´Arvores bin´ arias
+Os m´ etodos de gest˜ ao de mem´ oria para listas extendem-se ` a outras
+estruturas de dados homog´ eneas;
+Em ´ arvores bin´ arias usam-se os atributosp, lef t e right para
+armazenar apontadores para os n´ osprogenitor, descendente esquerdo
+e descendente direito, respetivamente de cada n´ o de uma ´ arvore
+bin´ ariaT ;
+Se o n´ ox n˜ ao tem descendente esquerdo ent˜ aox.lef t =nil (e de
+modo similar para o n´ o descendente direito);
+A raiz de toda a ´ arvoreT ´ e apontada pelo atributoT.root;
+Se a ´ arvore estiver vazia ent˜ aoT.root =nil.
+36 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 36 / 40
+´Arvores ´Arvores Bin´ arias
+´Arvore bin´ aria
+37 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 37 / 40
+´Arvores ´Arvores n-´ arias
+´Arvores n-´ arias
+O esquema de representa¸ c˜ ao para ´ arvores bin´ arias pode ser extendido
+para qualquer classe de ´ arvores em que o n´ umero de n´ os descendentes
+de cada n´ o n˜ ao ultrapassa uma constantek;
+Os atributos lef t e right podem ser eventualmente substitu ´ ıdos por
+child1, child2, . . . , childk, mas isto leva a:
+que o esquema n˜ ao funcione quando o n´ umero de n´ os descendentes
+n˜ ao ´ e limitado;
+a um mau aproveitamento da mem´ oria.
+38 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 38 / 40
+´Arvores ´Arvores n-´ arias
+´Arvores n-´ arias
+Uma representa¸ c˜ ao que ocupa apenasO(n) de mem´ oria ´ e atrav´ es da
+representa¸ c˜ ao por meio de n´ osdescendente-esquerdo, irm˜ aos-direito:
+cada n´ o cont´ em um apontadorp;
+T.root aponta para a raiz da ´ arvoreT ;
+x.lef t− child aponta para o n´ o descendente mais ` a esquerda dex;
+x.right− sibling aponta para o n´ o irm˜ ao imediatamente ` a direita;
+se o n´ ox n˜ ao tem descendentes ent˜ aox.lef t− child =nil.
+39 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 39 / 40
+´Arvores ´Arvores n-´ arias
+´Arvore n-´ aria
+40 de 40 Caeiro (Instituto Polit´ ecnico de Beja) Conjuntos Dinˆ amicos 2019 40 / 40

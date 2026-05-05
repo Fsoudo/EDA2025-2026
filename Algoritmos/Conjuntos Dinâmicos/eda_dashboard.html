@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDA Dashboard - Visualizador de Algoritmos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard_styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>EDA Dashboard</h1>
+            <p class="subtitle">Visualizador Interativo de Conjuntos Dinâmicos (Aula 5)</p>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" onclick="switchMode('binary_tree')">Árvore Binária</div>
+            <div class="tab" onclick="switchMode('doubly_list')">Lista Duplamente Ligada</div>
+            <div class="tab" onclick="switchMode('stack_queue')">Pilha & Fila</div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- COLUNA ESQUERDA: VISUALIZAÇÃO LÓGICA -->
+            <div class="panel">
+                <div class="panel-title">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Vista Lógica
+                </div>
+                <div id="visualizer" class="visualizer-area">
+                    <!-- Elementos gerados via JS -->
+                    <div class="placeholder-text">Adiciona um elemento para começar...</div>
+                </div>
+                
+                <div class="status-box" id="step-desc">
+                    Aguardando comandos...
+                </div>
+            </div>
+
+            <!-- COLUNA DIREITA: MEMÓRIA E CONTROLOS -->
+            <div class="controls-column">
+                <div class="panel controls-panel" style="margin-bottom: 1.5rem;">
+                    <div class="panel-title">Controlos</div>
+                    <div class="input-group">
+                        <input type="number" id="node-value" placeholder="Valor" value="10">
+                        <button onclick="handleAdd()">Inserir</button>
+                        <button class="secondary" onclick="handleClear()">Limpar</button>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-title">Tabelas de Memória (ArrayLists)</div>
+                    <div class="table-wrapper">
+                        <table id="memory-table">
+                            <thead>
+                                <tr id="table-headers">
+                                    <!-- Headers gerados via JS -->
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                                <!-- Filas geradas via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard_engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,431 @@
+--- PAGINA 1 ---
+Estruturas de Dados e Algoritmos
+Aula 2
+José Jasnau Caeiro
+j.caeiro@ipbeja.pt
+InstitutoPolitécnicodeBeja
+2023-2024
+1 de32 Caeiro(InstituEtostPruotluitréacsndiceoDdaedBoesjae)Algoritmos 2023-2024 1/32
+--- PAGINA 2 ---
+Projeto de Algoritmos
+Técnicas de projeto
+Há uma grande variedade no que se refere ao tipo de técnicas de projeto de algoritmos.
+Estudam-se duas com aplicação aos algoritmos de ordenação:
+a abordagem incremental;
+a técnica de divisão e conquista.
+O algoritmo Merge-Sort é projetado com o recurso à técnica de divisão e conquista.
+2 de32 Caeiro(InstituEtostPruotluitréacsndiceoDdaedBoesjae)Algoritmos 2023-2024 2/32
+--- PAGINA 3 ---
+1 Técnicas
+Abordagem Incremental
+Divisão e Conquista
+2 Merge Sort
+Aplicação do Paradigma
+Complexidade Computacional- merge
+merge sort
+Complexidade Computacional
+Teorema Principal
+Resultado
+3 Realização Experimental
+3 de32 Caeiro(InstituEtostPruotluitréacsndiceoDdaedBoesjae)Algoritmos 2023-2024 3/32
+--- PAGINA 4 ---
+Técnicas AbordagemIncremental
+Abordagem Incremental
+Por indução matemática
+é a técnica usada no algoritmo Insertion-Sort;
+um elemento de cada vez, designado por key, é incrementalmente colocado, através de
+uma iteração em valores sucessivos, no local apropriado;
+após todos os elementos terem sido processados, um após o outro, a estrutura de dados
+sequencial encontra-se ordenada.
+4 de32 Caeiro(InstituEtostPruotluitréacsndiceoDdaedBoesjae)Algoritmos 2023-2024 4/32
+--- PAGINA 5 ---
+Técnicas DivisãoeConquista
+Estrutura Geral da Técnica
+Divisão e Conquista
+muitos algoritmos são recursivos na sua arquitetura;
+esta arquitetura conduz à chamada da função que representa o algoritmo pela própria
+função;
+esta chamada é realizada uma ou mais vezes para tratar de sub-problemas estreitamente
+relacionados com o problema;
+este tipo de algoritmos seguem uma abordagem típica designada por divisão e conquista;
+dividem o problema em vários sub-problemas similares ao problema original mas com
+dimensão menor, resolvem os sub-problemas recursivamente e combinam as soluções
+resultantes para criar a solução do problema original.
+5 de32 Caeiro(InstituEtostPruotluitréacsndiceoDdaedBoesjae)Algoritmos 2023-2024 5/32
+--- PAGINA 6 ---
+Técnicas DivisãoeConquista
+Divisão e Conquista
+Os 3 passos
+A divisão e conquista envolve 3 passos em cada nível da recursividade
+Divisão do problema num certo número de sub-problemas que são instâncias menores do
+mesmo problema;
+Conquista dos sub-problemas por resolução recursiva. Se os sub-problemas são
+suficientemente pequenos então resolvem-se diretamente;
+Combinação as soluções dos sub-problemas são agregadas na solução do problema original.
+6 de32 Caeiro(InstituEtostPruotluitréacsndiceoDdaedBoesjae)Algoritmos 2023-2024 6/32
+--- PAGINA 7 ---
+MergeSort AplicaçãodoParadigma
+Aplicação do Paradigma da Divisão e Conquista
+Merge-Sort
+O algoritmo Merge-Sort segue de perto o paradigma da divisão e conquista.
+Divisão divide-se a sequência A de n elementos em duas sub-sequências com n/2
+elementos cada;
+Conquista ordenam-se as duas sub-sequências recursivamente usando o procedimento
+Merge-Sort;
+Combinação agregam-se (Merge) as duas sub-sequências de modo a produzir a sequência
+final ordenada.
+7 de32 Caeiro(InstituEtostPruotluitréacsndiceoDdaedBoesjae)Algoritmos 2023-2024 7/32
+--- PAGINA 8 ---
+MergeSort AplicaçãodoParadigma
+Agregação
+Combinar os resultados
+A operação mais crucial do algoritmo Merge-Sort é a agregação das duas sub-sequências
+ordenadas no passo de combinação.
+O procedimento de agregação é chamado pelo procedimento auxiliar Merge (A,p,q,r);
+A é uma tabela unidimensional;
+p, q e r são índices da tabela A;
+p≤q <r.
+O procedimento assume que as sub-tabelas A[p,...,q] e A[q +1,...,r] se encontram
+ordenadas.
+Agrega estas sub-tabelas para substituir a sub-tabela A[p,...,r].
+8 de32 Caeiro(InstituEtostPruotluitréacsndiceoDdaedBoesjae)Algoritmos 2023-2024 8/32
+--- PAGINA 9 ---
+MergeSort AplicaçãodoParadigma
+merge
+Figura: Pseudo código do algoritmo merge.
+9 de32 Caeiro(InstituEtostPruotluitréacsndiceoDdaedBoesjae)Algoritmos 2023-2024 9/32
+--- PAGINA 10 ---
+MergeSort AplicaçãodoParadigma
+Funcionamento
+Merge
+a linha 1 calcula a dimensão da sub-tabela A[p,...,q], correspondente à parte esquerda;
+a linha 2 calcula a dimensão da sub-tabela A[q+1,...,r], correspondente à parte direita;
+na linha 3 são criadas as duas sub-tabelas L, com dimensão n +1, e R com dimensão
+1
+n +1;
+2
+o ciclo for nas linhas 4 e 5 copia os elementos da sub-tabela A[p,...,q] para L[1,...,n ];
+1
+o ciclo for nas linhas 6 e 7 copia os elementos da sub-tabela A[q +1,...,r] para
+R[1,...,n ];
+2
+10 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 10/32
+--- PAGINA 11 ---
+MergeSort AplicaçãodoParadigma
+Funcionamento
+Merge (cont.)
+as linhas 8 e 9 colocam sentinelas (marcadores de fim de processamento) no fim das
+tabelas L e R;
+as linhas 10 a 17 copiam r −p+1 vezes o elemento de menor valor escolhido de L ou R
+para a posição adequada de A, ou seja,
+se L[i]≤R[j] então é copiada para a posição A[k]=L[i];
+em caso oposto A[k]=R[j]
+11 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 11/32
+--- PAGINA 12 ---
+MergeSort AplicaçãodoParadigma
+Passo a Passo (1)
+Figura: Funcionamento passo a passo.
+12 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 12/32
+--- PAGINA 13 ---
+MergeSort AplicaçãodoParadigma
+Passo a Passo (2)
+Figura: Funcionamento passo a passo.
+13 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 13/32
+--- PAGINA 14 ---
+MergeSort AplicaçãodoParadigma
+Passo a Passo (3)
+Figura: Funcionamento passo a passo.
+14 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 14/32
+--- PAGINA 15 ---
+MergeSort ComplexidadeComputacional-merge
+Complexidade Computacional
+Taxa de crescimento assintótica do tempo de execução
+O algoritmo Merge possui uma ordem de crescimento assintótica estrita temporal dada
+por Θ(n);
+n = r −p+1;
+as linhas 1 a 3 e 8 a 11 custam um tempo constante;
+o ciclo for dura Θ(n +n ) = Θ(n);
+1 2
+há n iterações no ciclo entre as linhas 12 a 17, cada uma com custo temporal constante.
+15 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 15/32
+--- PAGINA 16 ---
+MergeSort mergesort
+merge sort
+16 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 16/32
+--- PAGINA 17 ---
+MergeSort mergesort
+merge sort
+A ordenação
+O procedimento Merge-Sort ordena os elementos na sub-tabela A[p,...,r].
+se p ≥ r, então a sub-tabela tem no máximo um elemento e está praticamente ordenada;
+em alternativa o passo de divisão calcula um índice q que faz uma partição da tabela
+A[p,...,r] em duas sub-tabelas:
+A[p,...,q] contendo (cid:100)n/2(cid:101) elementos;
+A[q+1,...,r] contendo (cid:98)n/2(cid:99) elementos.
+17 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 17/32
+--- PAGINA 18 ---
+MergeSort mergesort
+merge sort
+A ordenação
+para ordenar A = (cid:104)A[1],A[2],...,A[n](cid:105) realiza-se a chamada inicial de
+Merge-Sort(A,1,A.length), A.length = n;
+o algoritmo Merge-Sort agrega sucessivamente sub-tabelas de dimensão
+2k,k = 0,...,log (n).
+2
+18 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 18/32
+--- PAGINA 19 ---
+MergeSort ComplexidadeComputacional
+Complexidade Computacional
+Análise com chamadas recursivas
+A complexidade computacional num algoritmo com chamadas recursivas pode ser obtida
+através duma equação de recorrência
+O tempo de execução designa-se por T(n)
+Se a dimensão do problema é suficientemente pequena, n ≤ c, para uma certa constante
+c, a solução direta leva tempo constante, Θ(1);
+Suponha-se que a divisão do problema dá origem a a sub-problemas cada um com
+dimensão 1/b da dimensão original;
+Leva T(n/b) para resolver um problema de dimensão n/b e portanto
+Leva aT(n/b) para resolver a problemas.
+19 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 19/32
+--- PAGINA 20 ---
+MergeSort ComplexidadeComputacional
+Complexidade Computacional
+Equação de recorrência
+sendo D(n) o tempo necessário para sub-dividir o problema em sub-problemas
+sendo C(n) o tempo necessário para combinar as soluções dos sub-problemas na solução
+do problema original,
+tem-se a recorrência:
+(cid:26)
+Θ(1) se n ≤ c,
+T(n) =
+aT(n/b)+D(n)+C(n) caso contrário.
+20 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 20/32
+--- PAGINA 21 ---
+MergeSort ComplexidadeComputacional
+Complexidade Computacional
+Merge-Sort
+No caso do algoritmo Merge-Sort considera-se na análise que
+a dimensão original da tabela A, é uma potência de 2, A.length = 2M;
+Cada passo da divisão dá origem a duas sub-tabelas de dimensão n/2;
+A aplicação do algoritmo Merge-Sort numa tabela com apenas um elemento leva
+tempo constante.
+21 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 21/32
+--- PAGINA 22 ---
+MergeSort ComplexidadeComputacional
+Complexidade Computacional
+Merge-Sort
+Quando há n > 1 elementos, o tempo de execução pode ser dividido em:
+Dividir O passo de divisão calcula o ponto central da sub-tabela, o que leva tempo
+constante, portanto, D(n) = Θ(1);
+Conquista Resolvem-se recursivamente 2 problemas, cada um com dimensão n/b = n/2, o
+que contribui aT(n/b) = 2T(n/2) para o tempo de execução;
+Combinação O procedimento Merge demora C(n) = Θ(n), como foi previamente calculado.
+22 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 22/32
+--- PAGINA 23 ---
+MergeSort ComplexidadeComputacional
+Complexidade Computacional
+Merge-Sort
+Reunindo as expressões para cálculo do tempo de execução teremos
+(cid:26)
+Θ(1) se n ≤ 1,
+T(n) =
+2T(n/2)+Θ(n) se n > 1.
+A expressão definitiva da complexidade computacional obtida a partir desta equação de
+recorrência é obtida através da aplicação do teorema principal, considerando Θ(1) = c, ou
+seja,
+(cid:26)
+c se n ≤ 1,
+T(n) =
+2T(n/2)+nc se n > 1.
+23 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 23/32
+--- PAGINA 24 ---
+MergeSort TeoremaPrincipal
+Teorema Principal
+Três situações
+Sejam a ≥ 1 e b > 1 constantes, f(n) uma função, e T(n) definida sobre um conjunto de
+inteiros não-negativos pela recorrência
+T(n) = aT(n/b)+f(n),
+Então T(n) assume os seguintes valores assintóticos:
+1 Se f(n) = O(nlog b a−(cid:15)) para uma constante (cid:15) > 0, então T(n) = Θ(nlog b a).
+2 Se f(n) = O(nlog b a), então T(n) = Θ(nlog b alog(n)).
+3 Se f(n) = O(nlog b a+(cid:15)), para uma constante (cid:15) > 0, e se af(n/b) ≤ cf(n) para alguma
+constante c < 1 e valores de n suficientemente elevados, então T(n) = Θ(f(n)).
+24 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 24/32
+--- PAGINA 25 ---
+MergeSort Resultado
+Aplicação do Teorema Principal
+Merge-Sort
+Aplicando o teorema principal ao algoritmo Merge-Sort tem-se
+T(n) = 2T(n/2)+Θ(n),
+ou seja, a = 2, b = 2, f(n) = Θ(n)
+Θ(nlog a) = Θ(nlog 2) = Θ(n1) = Θ(n)
+b 2
+e então verificam-se as condições do caso 2 do teorema principal e a ordem de crescimento, no
+pior cenário, é dada por
+Θ(n log b alog(n)) = Θ(n log 2 2log(n)) = Θ(nlog(n)).
+25 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 25/32
+--- PAGINA 26 ---
+MergeSort Resultado
+Representação Gráfica de Tempos de Execução
+Figura: Tempos de execução para várias ordens de complexidade computacional.
+26 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 26/32
+--- PAGINA 27 ---
+RealizaçãoExperimental
+Uma Realização do Algoritmo merge
+% -*- matlab-mode -*-
+1
+function A = mymerge (A, p, q, r)
+2
+n1 = q - p + 1; n2 = r - q;
+3
+L = zeros(1, n1+1); R = zeros(1, n2+1);
+4
+for i = 1:n1 L(i) = A(p + i - 1); end
+5
+for j = 1:n2 R(j) = A(q + j); end
+6
+L(n1+1) = intmax('int32'); R(n2+1) = intmax('int32');
+7
+i = 1; j = 1;
+8
+for k = p:r
+9
+if( L(i) <= R(j) )
+10
+A(k) = L(i); i = i + 1;
+11
+else
+12
+A(k) = R(j); j = j + 1;
+13
+end
+14
+end
+15
+27 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 27/32
+end
+16
+--- PAGINA 28 ---
+RealizaçãoExperimental
+Uma Realização do Algoritmo merge
+% -*- matlab-mode -*-
+1
+% ---------------------- x x x x x x x x
+2
+% 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+3
+A =[2,3,4,1,6,7,8,1, 2, 4, 5, 7, 1, 2, 3, 6, 7,8];
+4
+p = 9;
+5
+q = 12;
+6
+r = 16;
+7
+%A(p:r)
+8
+A
+9
+A = mymerge(A,p,q,r);
+10
+A
+11
+%A(p:r)
+12
+28 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 28/32
+--- PAGINA 29 ---
+RealizaçãoExperimental
+Uma Realização do Algoritmo merge em Kotlin
+import kotlin.math.*
+1
+class MergeSort(var A: IntArray){
+2
+fun merge(p: Int, q: Int, r: Int) {
+3
+val n1 = q-p+1
+4
+val n2 = r-q
+5
+val L = IntArray(n1+1)
+6
+val R = IntArray(n2+1)
+7
+for(i in 0..n1-1) L[i] = A[p+i] // 1..n1
+8
+for(j in 0..n2-1) R[j] = A[q+j+1] // 1..n2
+9
+L[n1] = Int.MAX_VALUE // n1+1
+10
+R[n2] = Int.MAX_VALUE // n2+1
+11
+29 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 29/32
+--- PAGINA 30 ---
+RealizaçãoExperimental
+Uma Realização do Algoritmo merge em Kotlin
+var i = 0 // 1
+12
+var j = 0 // 1
+13
+for(k in p..r){
+14
+if( L[i] <= R[j] ){
+15
+A[k] = L[i]
+16
+i++
+17
+} else {
+18
+A[k] = R[j]
+19
+j++
+20
+}
+21
+}
+22
+} // end fun merge
+23
+30 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 30/32
+--- PAGINA 31 ---
+RealizaçãoExperimental
+Uma Realização do Algoritmo merge em Kotlin
+fun mergeSort(p: Int, r: Int) {
+24
+if( p < r ){
+25
+val q: Int = floor((p+r)/2.0).toInt()
+26
+mergeSort(p, q)
+27
+mergeSort(q+1, r)
+28
+merge(p, q, r)
+29
+}
+30
+} // end fun mergeSort
+31
+} // end class MergeSort
+32
+31 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 31/32
+--- PAGINA 32 ---
+RealizaçãoExperimental
+Uma Realização do Algoritmo merge em Kotlin
+import kotlin.random.*
+1
+fun main() {
+2
+val A = IntArray(10) { Random.nextInt(0, 100)}
+3
+val mergeSort = MergeSort(A)
+4
+val p = 0 // 1
+5
+val r = A.size-1 // A.size
+6
+mergeSort.mergeSort(p, r)
+7
+}
+8
+32 de32 Caeiro(InstitEustotruPtoulritaéscdneicoDaddeoBseejaA)lgoritmos 2023-2024 32/32

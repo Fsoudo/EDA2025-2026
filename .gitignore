@@ -1,0 +1,35 @@
+# Git Ignore for EDA Project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Heavy files
+*.rar
+*.zip
+*.pdf
+*.7z
+
+# AI/Agent files
+.agents/
+skills-lock.json
+
+# Temporary files
+*.log
+*.tmp
+
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# Java/IDE files
+.idea/
+*.class
+.vscode/
+bin/
+out/

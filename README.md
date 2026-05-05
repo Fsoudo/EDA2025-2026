@@ -11,6 +11,7 @@
 ```
 📦 Estruturas de Dados e Algoritmos
 ├── 📁 Algoritmos/
+│   ├── 📁 InorderTreeWalk/           # [NOVO] Visualizações interativas de BST (Inorder, Search, Insert)
 │   ├── 📁 Conjuntos Dinâmicos/       # Árvores N-árias, listas dinâmicas, dashboard interativo
 │   ├── 📁 Ordenação/                  # Algoritmos de ordenação (Insertion Sort, Merge Sort, Heap Sort)
 │   │   └── 📁 MergeSort/             # Implementações do Merge Sort em múltiplas linguagens
@@ -45,6 +46,19 @@ Algoritmos de ordenação implementados e comparados.
 | `insertion_sort.py` | Python | Insertion Sort |
 | `insertion_sort.c` | C | Insertion Sort |
 | `MergeSort/merge_sort.py` | Python | Merge Sort |
+
+---
+
+### 🎨 Visualizações Interativas
+Projetos com foco em visualização gráfica e pedagógica de algoritmos.
+
+| Projeto | Tecnologia | Descrição |
+|---|---|---|
+| `InorderTreeWalk` | Python/Tkinter | Suite de visualização: Inorder Walk, BST Search e TREE-INSERT |
+| `eda_dashboard.html` | HTML/JS | Dashboard interativo de conjuntos dinâmicos |
+
+---
+
 | `MergeSort/merge_sort.c` | C | Merge Sort |
 | `MergeSort/MergeSort.java` | Java | Merge Sort |
 | `MergeSort/heapsort.kt` | Kotlin | Heap Sort |
@@ -126,6 +140,22 @@ java MergeSort
 
 ### Dashboard Web
 Abre o ficheiro `eda_dashboard.html` diretamente no browser.
+
+### Visualização Inorder Walk (Python)
+```bash
+# Árvore Equilibrada (Padrão)
+python Algoritmos/InorderTreeWalk/inorder_walk.py
+
+# Árvore Degenerada à Direita
+python Algoritmos/InorderTreeWalk/inorder_walk_right.py
+
+# Pesquisa em Árvore (BST Search)
+python Algoritmos/InorderTreeWalk/bst_search.py
+python Algoritmos/InorderTreeWalk/bst_search_iterative.py
+
+# Inserção Iterativa (TREE-INSERT)
+python Algoritmos/InorderTreeWalk/bst_insert_iterative.py
+```
 
 ---
 

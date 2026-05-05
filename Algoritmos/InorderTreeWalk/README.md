@@ -1,95 +1,96 @@
-# Inorder Tree Walk - Documentação
+# Visualizações de Algoritmos de Árvores (EDA)
 
-Este projeto é uma visualização interativa do algoritmo **Inorder Tree Walk** (Percorrimento em Ordem) utilizando Python e a biblioteca gráfica Tkinter.
-
-## 1. O que é o Inorder Tree Walk?
-
-O percorrimento **Inorder** é um dos três tipos clássicos de percorrimento de árvores binárias (junto com Preorder e Postorder). Em uma Árvore Binária de Busca (BST), este percorrimento visita os nós de forma a resultar em uma sequência **ordenada** dos valores.
-
-### A Ordem de Visita (Crescente):
-1.  **Esquerda**: Percorre recursivamente a subárvore esquerda.
-2.  **Raiz**: Visita o nó atual (imprime ou processa o valor).
-3.  **Direita**: Percorre recursivamente a subárvore direita.
-
-### Ordem Decrescente (Reverse Inorder):
-Para obter os valores do **maior para o menor**, basta inverter a ordem das subárvores:
-1.  **Direita**: Percorre recursivamente a subárvore direita (valores maiores).
-2.  **Raiz**: Visita o nó atual.
-3.  **Esquerda**: Percorre recursivamente a subárvore esquerda (valores menores).
-
-**Pseudocódigo (Crescente):**
-```python
-def inorder_walk(node):
-    if node is not None:
-        inorder_walk(node.left)
-        print(node.value)
-        inorder_walk(node.right)
-```
-
-**Pseudocódigo (Decrescente):**
-```python
-def reverse_inorder_walk(node):
-    if node is not None:
-        reverse_inorder_walk(node.right)
-        print(node.value)
-        reverse_inorder_walk(node.left)
-```
-
-### Outros Tipos de Percorrimento:
-*   **Preorder (Raiz → Esquerda → Direita)**: Útil para copiar a estrutura da árvore.
-*   **Postorder (Esquerda → Direita → Raiz)**: Útil para apagar a árvore ou calcular o tamanho de subárvores.
+Este diretório contém ferramentas interativas em Python para o estudo de **Árvores Binárias de Busca (BST)**. As visualizações foram desenhadas para tornar conceitos abstratos em experiências visuais claras.
 
 ---
 
-## 2. Complexidade do Algoritmo
+## 1. Algoritmos Disponíveis
 
-Este algoritmo é extremamente eficiente para visitar todos os elementos de uma árvore:
+### 🌳 Inorder Tree Walk (Equilibrado)
+-   **Ficheiro**: `inorder_walk.py`
+-   **Conceito**: Percorre a árvore na ordem **Esquerda -> Raiz -> Direita**.
+-   **Destaque**: Mostra como uma árvore equilibrada permite um percorrimento eficiente que resulta em valores ordenados.
+-   **Funcionalidade Extra**: Inclui um rasto (trace) no terminal e contador de iterações.
 
--   **Complexidade Temporal**: $O(n)$, onde $n$ é o número de nós na árvore, pois cada nó é visitado exatamente uma vez.
--   **Complexidade Espacial**: $O(h)$, onde $h$ é a altura da árvore, devido à pilha de chamadas da recursão. Em uma árvore equilibrada, isto é $O(\log n)$.
+### 📉 Inorder Tree Walk (Degenerada à Direita)
+-   **Ficheiro**: `inorder_walk_right.py`
+-   **Conceito**: Demonstra uma árvore onde cada nó só tem filhos à direita (Right-Skewed).
+-   **Destaque**: Útil para observar como o algoritmo se comporta quando a árvore perde a sua forma ideal e se assemelha a uma lista ligada.
+-   **Análise**: Notará que a recursão para a esquerda é quase instantânea (nó é sempre `None`), focando-se na descida diagonal.
 
----
-
-## 3. Como Funciona a Visualização
-
-A aplicação foi desenhada para tornar o conceito abstrato da recursão algo visual e fácil de entender.
-
-### Legenda de Cores:
--   **Nó Cinza**: Estado inicial (não visitado).
--   **Nó Azul**: O algoritmo está a "explorar" a subárvore deste nó (descendo na recursão).
--   **Nó Amarelo**: O algoritmo chegou ao passo de "visitar" a Raiz (o passo central do Inorder).
--   **Nó Verde**: O nó foi processado e adicionado à lista de resultados final.
-
-### Controlos e Funcionalidades:
--   **Começar Inorder Walk**: Inicia a jornada recursiva. O botão fica desativado durante a execução para evitar conflitos.
--   **Reiniciar**: Interrompe qualquer animação em curso e reseta as cores para o estado original.
--   **Velocidade**: Um slider que permite ajustar o delay entre passos (de 0.1s a 2.0s).
--   **Resultado em Tempo Real**: Uma etiqueta na parte inferior mostra os valores à medida que são "visitados", permitindo confirmar a ordem crescente.
--   **Árvore Exemplo**: O programa gera automaticamente uma árvore equilibrada com 15 nós (valores de 15 a 85) para uma demonstração clara.
+### 🔍 BST Search (Pesquisa Binária)
+-   **Ficheiro**: `bst_search.py`
+-   **Conceito**: Procura um valor específico na árvore.
+-   **Destaque**: Em vez de visitar todos os nós, o algoritmo decide o caminho (`Esquerda` ou `Direita`) com base em comparações.
+-   **Painel de Passos**: Inclui um mostrador grande de **PASSOS** que indica quão eficiente foi a procura. Se a árvore tiver altura $h$, a pesquisa levará no máximo $h+1$ passos.
 
 ---
 
-## 4. Detalhes Técnicos
+## 2. Guia Visual (Cores e Status)
 
-### Estrutura do Código:
--   `Node`: Classe que representa um nó da árvore, contendo o valor, ponteiros para os filhos e coordenadas `(x, y)` para o desenho.
--   `BST`: Implementação da Árvore Binária de Busca com lógica de inserção automática.
--   `TreeVisualizer`: A classe principal que gere a interface gráfica (`Tkinter`), o desenho no `Canvas` e a animação através de *threading*.
+Todas as visualizações utilizam o mesmo sistema de cores para facilitar a aprendizagem:
 
-### Requisitos:
--   Python 3.x
--   Biblioteca `tkinter` (incluída por padrão na maioria das instalações de Python).
+| Cor | Significado | Fase do Algoritmo |
+|---|---|---|
+| **Cinzento (`#313244`)** | Por visitar | Estado inicial do nó. |
+| **Azul (`#89b4fa`)** | Exploração | O algoritmo está a descer para uma subárvore. |
+| **Amarelo (`#f9e2af`)** | Comparação / Raiz | O nó está a ser "processado" ou comparado com o alvo. |
+| **Verde (`#a6e3a1`)** | Sucesso / Visitado | O nó foi visitado (Inorder) ou encontrado (Search). |
+| **Vermelho (`#f38ba8`)** | Base / Falha | Chegou a um nó nulo ou o valor não existe. |
 
 ---
 
-## 5. Como Executar
+## 3. Análise de Complexidade
 
-Navegue até à pasta do projeto e execute:
+Todos os algoritmos de manipulação direta (Pesquisa e Inserção) dependem da altura da árvore:
+
+-   **Tempo de Execução**: $O(h)$, onde $h$ é a altura da árvore.
+    -   Numa árvore **equilibrada**: $h \approx \log_2 n \implies O(\log n)$.
+    -   Numa árvore **degenerada** (como a `inorder_walk_right.py`): $h = n \implies O(n)$.
+-   **Espaço**:
+    -   Versões **Iterativas**: $O(1)$ (apenas ponteiros).
+    -   Versões **Recursivas**: $O(h)$ (devido à pilha de chamadas).
+
+---
+
+## 4. Informação de Iterações e Argumentos
+
+Adicionámos funcionalidades de "debug" pedagógico em todos os scripts:
+
+1.  **Etiqueta de Status**: No topo de cada janela, poderá ler o **Argumento Atual** que a função recebeu (ex: `Nó(50)` ou `None`).
+2.  **Contador de Iterações**: Indica quantas chamadas recursivas foram feitas no total. Isto ajuda a visualizar a complexidade espacial e temporal.
+3.  **Trace no Terminal**: Para quem gosta de analisar código, o terminal imprime o fluxo completo:
+    ```text
+    --> Chamada #1 | Processando Nó: 6
+      [6] Indo para a ESQUERDA...
+    --> Chamada #2 | Processando Nó: 5
+    ```
+
+---
+
+## 4. Como Executar
+
+Certifique-se de que tem o Python instalado e execute o script pretendido:
 
 ```bash
+# Para o percorrimento padrão
 python inorder_walk.py
-```
+
+# Para a árvore degenerada
+python inorder_walk_right.py
+
+# Para a pesquisa interativa
+python bst_search.py
+
+# Para a pesquisa iterativa
+4.  **Pesquisa Iterativa (BST Search Iterative)**:
+    Demonstra como procurar um valor usando um ciclo `while`, sem recorrer a funções recursivas. É a versão mais eficiente em termos de memória.
+5.  **Inserção Iterativa (BST Insert Iterative)**:
+    Implementação fiel ao pseudocódigo `TREE-INSERT(T, z)` do livro CLRS. Mostra os ponteiros `x` e `y` a navegar na árvore até encontrar a posição correta.
+    ```bash
+    python bst_insert_iterative.py
+    ```
 
 ---
 
-*Desenvolvido como material de apoio para a unidade de Estruturas de Dados e Algoritmos.*
+*Material desenvolvido para a unidade de Estruturas de Dados e Algoritmos — Francisco Soudo.*

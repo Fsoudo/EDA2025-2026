@@ -155,6 +155,9 @@ python Algoritmos/InorderTreeWalk/bst_search_iterative.py
 
 # Inserção Iterativa (TREE-INSERT)
 python Algoritmos/InorderTreeWalk/bst_insert_iterative.py
+
+# Remoção em Árvore (TREE-DELETE & TRANSPLANT)
+python Algoritmos/InorderTreeWalk/bst_delete.py
 ```
 
 ---

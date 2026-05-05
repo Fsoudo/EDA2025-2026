@@ -1,96 +1,195 @@
-# Visualizações de Algoritmos de Árvores (EDA)
+# Visualizações Interativas de Árvores Binárias de Busca (BST)
 
-Este diretório contém ferramentas interativas em Python para o estudo de **Árvores Binárias de Busca (BST)**. As visualizações foram desenhadas para tornar conceitos abstratos em experiências visuais claras.
-
----
-
-## 1. Algoritmos Disponíveis
-
-### 🌳 Inorder Tree Walk (Equilibrado)
--   **Ficheiro**: `inorder_walk.py`
--   **Conceito**: Percorre a árvore na ordem **Esquerda -> Raiz -> Direita**.
--   **Destaque**: Mostra como uma árvore equilibrada permite um percorrimento eficiente que resulta em valores ordenados.
--   **Funcionalidade Extra**: Inclui um rasto (trace) no terminal e contador de iterações.
-
-### 📉 Inorder Tree Walk (Degenerada à Direita)
--   **Ficheiro**: `inorder_walk_right.py`
--   **Conceito**: Demonstra uma árvore onde cada nó só tem filhos à direita (Right-Skewed).
--   **Destaque**: Útil para observar como o algoritmo se comporta quando a árvore perde a sua forma ideal e se assemelha a uma lista ligada.
--   **Análise**: Notará que a recursão para a esquerda é quase instantânea (nó é sempre `None`), focando-se na descida diagonal.
-
-### 🔍 BST Search (Pesquisa Binária)
--   **Ficheiro**: `bst_search.py`
--   **Conceito**: Procura um valor específico na árvore.
--   **Destaque**: Em vez de visitar todos os nós, o algoritmo decide o caminho (`Esquerda` ou `Direita`) com base em comparações.
--   **Painel de Passos**: Inclui um mostrador grande de **PASSOS** que indica quão eficiente foi a procura. Se a árvore tiver altura $h$, a pesquisa levará no máximo $h+1$ passos.
+> Material pedagógico interativo para o estudo de algoritmos sobre **Árvores Binárias de Busca (BST)**.  
+> Unidade Curricular: Estruturas de Dados e Algoritmos — Instituto Politécnico de Beja  
+> Baseado no livro *Introduction to Algorithms* (CLRS, 4.ª edição).
 
 ---
 
-## 2. Guia Visual (Cores e Status)
+## 📁 Scripts Disponíveis
 
-Todas as visualizações utilizam o mesmo sistema de cores para facilitar a aprendizagem:
+| # | Ficheiro | Algoritmo | Referência CLRS |
+|---|---|---|---|
+| 1 | `inorder_walk.py` | Percorrimento Inorder (árvore equilibrada) | Cap. 12.1 |
+| 2 | `inorder_walk_right.py` | Percorrimento Inorder (árvore degenerada à direita) | Cap. 12.1 |
+| 3 | `bst_search.py` | Pesquisa Recursiva — `TREE-SEARCH(x, k)` | Cap. 12.2 |
+| 4 | `bst_search_iterative.py` | Pesquisa Iterativa — `ITERATIVE-TREE-SEARCH(x, k)` | Cap. 12.2 |
+| 5 | `bst_insert_iterative.py` | Inserção — `TREE-INSERT(T, z)` | Cap. 12.3 |
+| 6 | `bst_delete.py` | Remoção — `TREE-DELETE(T, z)` + `TRANSPLANT(T, u, v)` | Cap. 12.3 |
 
-| Cor | Significado | Fase do Algoritmo |
+---
+
+## 1. Percorrimento Inorder — `inorder_walk.py` / `inorder_walk_right.py`
+
+**Pseudocódigo:**
+```
+INORDER-TREE-WALK(x)
+  if x != NIL
+      INORDER-TREE-WALK(x.left)
+      print x.key
+      INORDER-TREE-WALK(x.right)
+```
+
+- **Ideia**: Visitar os nós na ordem **Esquerda → Raiz → Direita** produz os valores por ordem crescente.
+- **`inorder_walk.py`**: Árvore equilibrada — mostra o fluxo recursivo completo com todas as subárvores.
+- **`inorder_walk_right.py`**: Árvore degenerada (Right-Skewed) — cada nó só tem filho à direita. Demonstra o pior caso estrutural.
+- **Extras**: Contador de iterações em tempo real e trace completo no terminal.
+- **Complexidade**: Temporal $O(n)$ · Espacial $O(h)$ (pilha de recursão).
+
+---
+
+## 2. Pesquisa Recursiva — `bst_search.py`
+
+**Pseudocódigo:**
+```
+TREE-SEARCH(x, k)
+  if x == NIL or k == x.key
+      return x
+  if k < x.key
+      return TREE-SEARCH(x.left, k)
+  else
+      return TREE-SEARCH(x.right, k)
+```
+
+- **Ideia**: Comparar o valor `k` com o nó atual e descer recursivamente para a subárvore correcta.
+- **Painel de PASSOS**: Mostra o número de comparações efectuadas até ao resultado.
+- **Legenda de cores**: Amarelo (a comparar) → Verde (encontrado) / Vermelho (não existe).
+- **Complexidade**: $O(h)$.
+
+---
+
+## 3. Pesquisa Iterativa — `bst_search_iterative.py`
+
+**Pseudocódigo:**
+```
+ITERATIVE-TREE-SEARCH(x, k)
+  while x != NIL and k != x.key
+      if k < x.key
+          x = x.left
+      else
+          x = x.right
+  return x
+```
+
+- **Ideia**: Equivalente à versão recursiva, mas sem consumir a pilha de chamadas.
+- **Vantagem**: $O(1)$ de espaço adicional em vez de $O(h)$.
+- **Visualização**: O ponteiro `curr` é destacado a cada iteração do ciclo `while`.
+- **Complexidade**: Temporal $O(h)$ · Espacial $O(1)$.
+
+---
+
+## 4. Inserção Iterativa — `bst_insert_iterative.py`
+
+**Pseudocódigo:**
+```
+TREE-INSERT(T, z)
+  y = NIL
+  x = T.root
+  while x != NIL          ← usa dois ponteiros: x (atual) e y (pai)
+      y = x
+      if z.key < x.key
+          x = x.left
+      else
+          x = x.right
+  z.p = y
+  if y == NIL
+      T.root = z           ← árvore estava vazia
+  elseif z.key < y.key
+      y.left = z
+  else
+      y.right = z
+```
+
+- **Ponteiros**:
+  - **`x`** (Azul) — desce pela árvore até encontrar `NIL`.
+  - **`y`** (Amarelo) — segue `x` com um passo de atraso; é o pai onde o nó será anexado.
+- **Funcionalidades**: Inserção de novos nós, reinício e ajuste de velocidade.
+- **Complexidade**: $O(h)$.
+
+---
+
+## 5. Remoção — `bst_delete.py`
+
+### Procedimento Auxiliar — `TRANSPLANT(T, u, v)`
+
+```
+TRANSPLANT(T, u, v)
+  if u.p == NIL            ← u era a raiz
+      T.root = v
+  elseif u == u.p.left     ← u era filho esquerdo
+      u.p.left = v
+  else                     ← u era filho direito
+      u.p.right = v
+  if v != NIL
+      v.p = u.p
+```
+
+> O `TRANSPLANT` substitui a subárvore enraizada em `u` pela subárvore enraizada em `v`, ajustando o ponteiro do pai.
+
+### Algoritmo Principal — `TREE-DELETE(T, z)`
+
+Existem **3 casos** possíveis:
+
+| Caso | Condição | Ação |
 |---|---|---|
-| **Cinzento (`#313244`)** | Por visitar | Estado inicial do nó. |
-| **Azul (`#89b4fa`)** | Exploração | O algoritmo está a descer para uma subárvore. |
-| **Amarelo (`#f9e2af`)** | Comparação / Raiz | O nó está a ser "processado" ou comparado com o alvo. |
-| **Verde (`#a6e3a1`)** | Sucesso / Visitado | O nó foi visitado (Inorder) ou encontrado (Search). |
-| **Vermelho (`#f38ba8`)** | Base / Falha | Chegou a um nó nulo ou o valor não existe. |
+| 1 | `z` não tem filho esquerdo | `TRANSPLANT(T, z, z.right)` |
+| 2 | `z` não tem filho direito | `TRANSPLANT(T, z, z.left)` |
+| 3 | `z` tem dois filhos | Encontrar o **sucessor mínimo** `y` de `z.right` e fazer transplante |
+
+- **Legenda de cores**:
+  - 🔴 Vermelho — nó a remover.
+  - 🟣 Roxo — sucessor mínimo (caso 3).
+  - 🔵 Azul — nó em análise durante o `TRANSPLANT`.
+  - 🟡 Amarelo — passo do `TRANSPLANT` em execução.
+  - 🟢 Verde — operação concluída.
+- **Funcionalidades**: Remover, inserir novos nós, reiniciar e ajustar velocidade.
+- **Complexidade**: $O(h)$.
 
 ---
 
-## 3. Análise de Complexidade
+## 6. Guia de Cores (todos os scripts)
 
-Todos os algoritmos de manipulação direta (Pesquisa e Inserção) dependem da altura da árvore:
-
--   **Tempo de Execução**: $O(h)$, onde $h$ é a altura da árvore.
-    -   Numa árvore **equilibrada**: $h \approx \log_2 n \implies O(\log n)$.
-    -   Numa árvore **degenerada** (como a `inorder_walk_right.py`): $h = n \implies O(n)$.
--   **Espaço**:
-    -   Versões **Iterativas**: $O(1)$ (apenas ponteiros).
-    -   Versões **Recursivas**: $O(h)$ (devido à pilha de chamadas).
-
----
-
-## 4. Informação de Iterações e Argumentos
-
-Adicionámos funcionalidades de "debug" pedagógico em todos os scripts:
-
-1.  **Etiqueta de Status**: No topo de cada janela, poderá ler o **Argumento Atual** que a função recebeu (ex: `Nó(50)` ou `None`).
-2.  **Contador de Iterações**: Indica quantas chamadas recursivas foram feitas no total. Isto ajuda a visualizar a complexidade espacial e temporal.
-3.  **Trace no Terminal**: Para quem gosta de analisar código, o terminal imprime o fluxo completo:
-    ```text
-    --> Chamada #1 | Processando Nó: 6
-      [6] Indo para a ESQUERDA...
-    --> Chamada #2 | Processando Nó: 5
-    ```
+| Cor | Hex | Significado |
+|---|---|---|
+| Cinzento escuro | `#313244` | Nó por visitar (estado inicial) |
+| Azul | `#89b4fa` | Exploração / ponteiro `x` / em análise |
+| Amarelo | `#f9e2af` | Comparação / visita da Raiz / TRANSPLANT |
+| Laranja | `#fab387` | Ponteiro `y` (pai) / decisão → direita |
+| Roxo | `#cba6f7` | Sucessor mínimo (remoção) |
+| Verde | `#a6e3a1` | Sucesso — encontrado ou visitado |
+| Vermelho | `#f38ba8` | Base da recursão (`NIL`) / nó a remover / falha |
 
 ---
 
-## 4. Como Executar
+## 7. Análise de Complexidade
 
-Certifique-se de que tem o Python instalado e execute o script pretendido:
+| Algoritmo | Temporal | Espacial |
+|---|---|---|
+| Inorder Walk | $O(n)$ | $O(h)$ recursivo |
+| Pesquisa Recursiva | $O(h)$ | $O(h)$ recursivo |
+| Pesquisa Iterativa | $O(h)$ | $O(1)$ |
+| Inserção Iterativa | $O(h)$ | $O(1)$ |
+| Remoção (+ TRANSPLANT) | $O(h)$ | $O(1)$ |
+
+> **Nota**: $h$ é a altura da árvore. Em árvores **equilibradas**, $h = O(\log n)$. Em árvores **degeneradas**, $h = O(n)$.
+
+---
+
+## 8. Como Executar
+
+Navegue até esta pasta e execute o script pretendido:
 
 ```bash
-# Para o percorrimento padrão
-python inorder_walk.py
+python inorder_walk.py           # Percorrimento Inorder (equilibrado)
+python inorder_walk_right.py     # Percorrimento Inorder (degenerado)
+python bst_search.py             # Pesquisa Recursiva
+python bst_search_iterative.py   # Pesquisa Iterativa
+python bst_insert_iterative.py   # Inserção (TREE-INSERT)
+python bst_delete.py             # Remoção (TREE-DELETE + TRANSPLANT)
+```
 
-# Para a árvore degenerada
-python inorder_walk_right.py
-
-# Para a pesquisa interativa
-python bst_search.py
-
-# Para a pesquisa iterativa
-4.  **Pesquisa Iterativa (BST Search Iterative)**:
-    Demonstra como procurar um valor usando um ciclo `while`, sem recorrer a funções recursivas. É a versão mais eficiente em termos de memória.
-5.  **Inserção Iterativa (BST Insert Iterative)**:
-    Implementação fiel ao pseudocódigo `TREE-INSERT(T, z)` do livro CLRS. Mostra os ponteiros `x` e `y` a navegar na árvore até encontrar a posição correta.
-    ```bash
-    python bst_insert_iterative.py
-    ```
+**Requisitos**: Python 3.x com `tkinter` (incluído por defeito na maioria das instalações).
 
 ---
 
-*Material desenvolvido para a unidade de Estruturas de Dados e Algoritmos — Francisco Soudo.*
+*Desenvolvido por Francisco Soudo — Estruturas de Dados e Algoritmos, 2024/2025.*
